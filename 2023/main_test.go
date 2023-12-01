@@ -3,8 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"regexp"
-	"strconv"
 	"strings"
 	"testing"
 )
@@ -64,23 +62,6 @@ zoneight234
 	{`vj8`, 88},
 	{`zxkncsrktnrv74eighttwonine`, 79},
 	{`nineeightvhncnbtbp68fone`, 91},
-}
-
-func SumNumbersByRegexp(s *bufio.Scanner) (int, error) {
-	r := regexp.MustCompile(`\d`)
-
-	total := 0
-	for s.Scan() {
-		matches := r.FindAllString(s.Text(), -1)
-		number := fmt.Sprintf("%s%s", matches[0], matches[len(matches)-1])
-		n, err := strconv.Atoi(number)
-		if err != nil {
-			return total, err
-		}
-		total += n
-	}
-
-	return total, nil
 }
 
 func TestLine(t *testing.T) {
